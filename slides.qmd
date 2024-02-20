@@ -1,0 +1,46 @@
+---
+title: "Bridging the gap from darkness to solar brilliance"
+subtitle: A UN Datathon Story
+format: 
+    clean-revealjs:
+        self-contained: true
+author:
+    - name: Janith Wanniarachchi
+      affiliations: EBS, Monash
+    - name: David Wu
+      affiliations: EBS, Monash
+    - name: Sundance Sun
+      affiliations: Education, Melbourne
+    - name: James Hogg
+      affiliations: Maths, QUT
+    - name: Farhan Ameen
+      affiliations: Maths & Stats, USyd
+place: NUMBAT Seminar
+date: Feb 29 2024
+---
+
+# The official bit
+
+## The Datathon
+
+![pictures]()
+
+## The problem
+
+
+## Our project
+
+
+
+
+# The experience
+
+
+
+
+# The learnings
+
+
+
+
+# The ad
