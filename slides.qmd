@@ -4,6 +4,7 @@ subtitle: A UN Datathon Story
 format: 
     clean-revealjs:
         self-contained: true
+        theme: [theme/colours.scss]
 author:
     - name: Janith Wanniarachchi
       affiliations: EBS, Monash
@@ -27,6 +28,10 @@ date: Feb 29 2024
 
 ## The problem
 
+- Create a [data solution]{.green}
+- that tackles local sustainable development challenges
+- and leverages one of the six key transitions
+- which focuses on the SDG localisation enabler.
 
 ## Our project
 
@@ -35,12 +40,21 @@ date: Feb 29 2024
 
 # The experience
 
+## Day 1
+
+So none of us had much experience with spatial data.
+
 
 
 
 # The learnings
 
+## Learnings
 
+- Impress people with fancy graphics.
 
+> Use AI {.spooky} to generate images
+
+- 
 
 # The ad
