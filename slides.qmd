@@ -41,6 +41,20 @@ Problem: Globally, nearly a billion people lack reliable energy sources, and sol
 
 Solution: Map areas of the globe that solar farm investment would be successful in, by using existing solar farms as training data; overlay that onto a map of energy demand, proxied by night light data.
 
+## Data Source
+
+| Quantity | Source | Provided/Extracted Format |
+|:---------|:--------------------------|:-----|
+| Population density | [Google Earth Engine, provided by Oak Ridge National Laboratory](https://developers.google.com/earth-engine/datasets/catalog/projects_sat-io_open-datasets_ORNL_LANDSCAN_GLOBAL) | tiff | 
+| Night light intensity | [NASA, Earth at Night project](https://earthobservatory.nasa.gov/features/NightLights/page3.php) | tiff |  
+| Biomass/land use | [NASA](https://neo.gsfc.nasa.gov/view.php?datasetId=MOD_NDVI_M&year=2016) | tiff |
+| Terrain slope | [Google Earth Engine, provided by USGS](https://developers.google.com/earth-engine/datasets/catalog/USGS_GMTED2010#description) | tiff |
+| Photovoltaic potential | [Global Solar Atlas](https://globalsolaratlas.info/download) | tiff | 
+| Solar farm locations | [S. Dunnett, hosted on awesome-gee-community-catalog and figshare](https://gee-community-catalog.org/projects/energy_farms/) | csv |
+
+## Rough Model Details
+
+
 ## {.center}
 
 [Shiny App](http://localhost:3350)
