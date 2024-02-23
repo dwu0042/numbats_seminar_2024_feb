@@ -26,7 +26,7 @@ date: Feb 29 2024
 
 ![pictures]()
 
-## The problem
+## The project brief
 
 - Create a [data solution]{.green}
 - that tackles local sustainable development challenges
@@ -35,7 +35,15 @@ date: Feb 29 2024
 
 ## Our project
 
+Aim: Slap together a half-baked solution in 3 days.
 
+Problem: Globally, nearly a billion people lack reliable energy sources, and solar is a cost-effective way for this demand to be fulfilled.
+
+Solution: Map areas of the globe that solar farm investment would be successful in, by using existing solar farms as training data; overlay that onto a map of energy demand, proxied by night light data.
+
+## {.center}
+
+[Shiny App](http://localhost:3350)
 
 
 # The experience
@@ -45,16 +53,78 @@ date: Feb 29 2024
 So none of us had much experience with spatial data.
 
 
+UN provided "data sources"
+  - but it was just a shotgun list of other lists 
+  
+![](images/undatathon_datasources_list.png)
+
+Most of it was spent collecting and sourcing data.
+
+Initial focus was on Africa, but we couldn't find nice shape files or very local data for the region.
+
+Limitations:
+  - We wanted to find spatial data at a lower-than-country resolution over a global span.
+
+- Work was done on an AWS EC2 instance that had RStudio Server installed.
+  - AWS has an image with RSTudio server, but you need to add the AMI, which we coulnd't do
+  - So I chose the wrong instance image (Amazaon Linux) and sepnt a day building dependencies from source.
+  - I had to do this again when I upgraded the disk size
+
+## Day 2
+
+  - Data was concorded onto a regular grid for analysis.
+    - We don't talk about how long I spent on this in Python that was refactored into a single call in R 
+
+  - We used Facebook/Amazon data source initial for population data: gave up cause the data was broken up into tiles, which then didn't match up after reconstruction.
+    - this was 
+  - Moved to the Google Earth Engine API
+    - data exports to drive, but no progress indicator
+  - which we had previously used to find terrain data
+
+
+End of day:
+  - First model
+  - Models were trained overnight
+
+
+## Day 3
+
+R Shiny app was being built
+
+Model was being iterated on Day 3
+
+
+
+Submitted at 6.30pm
+People watched until 9pm
+Everywhere good for food was closed or in the process of closing
 
 
 # The learnings
 
 ## Learnings
 
+::: {.incremental}
 - Impress people with fancy graphics.
 
-> Use AI {.spooky} to generate images
+  - Use AI {.spooky} to generate images
 
-- 
+- Communicating the trash you have assembled is (more) important (than the quality of trash you collect)
 
-# The ad
+- R and Python can work together
+
+- Spatial data is a pain in the ass to work with
+:::
+
+# Acknowledgements
+
+- QUT Centre for Data Science
+- ADSN
+- George
+
+- Farhan
+- Sundance
+- Jamie
+
+- Tim
+- Michael
