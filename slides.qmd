@@ -41,7 +41,7 @@ Problem: Globally, nearly a billion people lack reliable energy sources, and sol
 
 Solution: Map areas of the globe that solar farm investment would be successful in, by using existing solar farms as training data; overlay that onto a map of energy demand, proxied by night light data.
 
-## Data Source
+## Data Sources {.smaller}
 
 | Quantity | Source | Provided/Extracted Format |
 |:---------|:--------------------------|:-----|
@@ -52,11 +52,64 @@ Solution: Map areas of the globe that solar farm investment would be successful 
 | Photovoltaic potential | [Global Solar Atlas](https://globalsolaratlas.info/download) | tiff | 
 | Solar farm locations | [S. Dunnett, hosted on awesome-gee-community-catalog and figshare](https://gee-community-catalog.org/projects/energy_farms/) | csv |
 
-## Rough Model Details
 
+## Concordance
+
+Data was all remapped from their raw forms onto a consistent grid.
+
+```{.r}
+rasterGrid = raster(ncols = 3600, nrows = 1800,
+                    xmn = -180, xmx = 180,
+                    ymn = -90, ymx = 90)
+baseRaster = terra::rast(rasterGrid)
+
+rawValues = terra::rast(tiffFile)
+consistentValues = resample(rawValues, baseRaster, method = "bilinear")
+
+valueDataFrame = as.data.frame(consistentValues, xy = TRUE, na.rm = FALSE) %>% 
+    mutate(id = 1:ncell(consistenValues))
+```
+
+
+## Rough Model Details: Power Ratio
+
+Regress per-area power production of existing solar farm locations on a laughably small number of factors (photovoltaic potential, land use, terrain slope).
+
+Using "spatial" "random forest".
+
+```{.r}
+library(caret)
+
+form = power_density ~ biomass + slope + photovoltaic_potential + lat + lon
+
+caret::train(
+  form,
+  method = "ranger",
+  ...
+)
+```
+
+## Rough Model Details: Energy Demand
+
+Demand was modelled using a proxy quantity constructed from night light intensity and population density
+
+```{.python}
+import polars as pl
+
+(regressors.lazy()
+  .with_columns(
+    log_density = (255 - pl.col('density') + 1).log10(),
+    log_nightlight = (pl.col('nightlight') + 1).log10(),
+  )
+  .with_columns(
+    demand = -(pl.col('log_density') + pl.col('log_nightlight')) + (np.log10(256))
+  )
+  .select('x', 'y', 'demand')
+)
+```
 
 ## {.center}
-
+ 
 [Shiny App](http://localhost:3350)
 
 
