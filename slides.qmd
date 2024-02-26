@@ -24,7 +24,19 @@ date: Feb 29 2024
 
 ## The Datathon
 
-![pictures]()
+::: {.r-stack}
+
+![](images/group_img_0.jpeg){.fragment}
+
+![](images/group_img_1.jpeg){.fragment}
+
+![](images/group_img_2.jpeg){.fragment}
+
+![](images/group_img_3.jpeg){.fragment}
+
+![](images/group_img_4.jpeg){.fragment}
+
+:::
 
 ## The project brief
 
@@ -128,6 +140,8 @@ UN provided "data sources"
 Most of it was spent collecting and sourcing data.
 
 Initial focus was on Africa, but we couldn't find nice shape files or very local data for the region.
+
+---
 
 Limitations:
   - We wanted to find spatial data at a lower-than-country resolution over a global span.
