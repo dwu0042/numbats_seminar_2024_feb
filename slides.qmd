@@ -47,11 +47,18 @@ date: Feb 29 2024
 
 ## Our project
 
-Aim: Slap together a half-baked solution in 3 days.
+### Aim: 
 
-Problem: Globally, nearly a billion people lack reliable energy sources, and solar is a cost-effective way for this demand to be fulfilled.
+- At the beginning: Solve world problems
+- Towards the middle: Slap together a half-baked solution in 3 days.
 
-Solution: Map areas of the globe that solar farm investment would be successful in, by using existing solar farms as training data; overlay that onto a map of energy demand, proxied by night light data.
+### Problem: 
+
+Globally, nearly a billion people lack reliable energy sources, and solar is a cost-effective way for this demand to be fulfilled.
+
+### Solution: 
+
+Map areas of the globe that solar farm investment would be successful in, by using existing solar farms as training data; overlay that onto a map of energy demand, proxied by night light data.
 
 ## Data Sources {.smaller}
 
@@ -131,54 +138,85 @@ import polars as pl
 
 So none of us had much experience with spatial data.
 
+. . . 
 
 UN provided "data sources"
   - but it was just a shotgun list of other lists 
   
 ![](images/undatathon_datasources_list.png)
 
+---
+
 Most of it was spent collecting and sourcing data.
 
 Initial focus was on Africa, but we couldn't find nice shape files or very local data for the region.
 
----
-
 Limitations:
-  - We wanted to find spatial data at a lower-than-country resolution over a global span.
+
+- We wanted to find spatial data at a lower-than-country resolution over a global span.
 
 - Work was done on an AWS EC2 instance that had RStudio Server installed.
   - AWS has an image with RSTudio server, but you need to add the AMI, which we coulnd't do
   - So I chose the wrong instance image (Amazaon Linux) and sepnt a day building dependencies from source.
   - I had to do this again when I upgraded the disk size
 
+## The madness continues...
+
+::::{.columns}
+
+:::{.column width="30%"}
+![](images/group_vid_0.gif)
+:::
+
+:::{.column width="30%"}
+![](images/group_vid_1.gif)
+:::
+
+:::{.column width="30%"}
+![](images/group_vid_2.gif)
+:::
+
+::::
+
 ## Day 2
 
-  - Data was concorded onto a regular grid for analysis.
-    - We don't talk about how long I spent on this in Python that was refactored into a single call in R 
-
-  - We used Facebook/Amazon data source initial for population data: gave up cause the data was broken up into tiles, which then didn't match up after reconstruction.
-    - this was 
-  - Moved to the Google Earth Engine API
-    - data exports to drive, but no progress indicator
+- Data was concorded onto a regular grid for analysis.
+  - The focus of our solution was changed to the entire world.
+  - The grid size was set to 3600 x 1800 (6,480,000 cells!)
+  - We don't talk about how long I spent on this in Python that was refactored into a single call in R 
+. . .
+- We used Facebook/Amazon data source initial for population data: gave up cause the data was too big and broken up into tiles, which then didn't match up after reconstruction.
+  - I spent way too much time working on loading the data in R and stitching it together only to abandon it at the end.
+- Moved to the Google Earth Engine API (available in Python and Javascript)
+  - data exports to drive, but no progress indicator
   - which we had previously used to find terrain data
+. . .
+- The data was consolidated and models were buing built
+  - So I decided to make a Shiny app to showcase our final solution
+  - Used the `rhino` framework from Appsilon to speed up the process
+  - Learned how to showcase 6 million points in leaflet
+    - Had to reduced the resolution to a manageable level
+    - Used rectangles to showcase areas, instead of individual dots
 
+. . .
 
 End of day:
-  - First model
-  - Models were trained overnight
+
+- A simple linear regression model was built as a baseline model
+- Models were trained and validated overnight
+- Shiny app was built up to a rough POC
 
 
 ## Day 3
 
-R Shiny app was being built
-
-Model was being iterated on Day 3
-
-
-
-Submitted at 6.30pm
-People watched until 9pm
-Everywhere good for food was closed or in the process of closing
+* Model was being iterated on Day 3
+* R Shiny app was being developed further with interactivity and final UI touchups
+* Sherry became a doctor
+* Submitted our state of the art solution at 6.30pm
+* People watched until 9 p.m.
+* Everywhere good for food was closed or in the process of closing
+* First stop was Riverland Brisbane and then to Felons Barrel ----------
+  * Learnings: The smallest measurement unit in glasses is a pony
 
 
 # The learnings
