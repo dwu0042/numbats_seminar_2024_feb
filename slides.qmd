@@ -1,10 +1,13 @@
 ---
 title: "Bridging the gap from darkness to solar brilliance"
 subtitle: A UN Datathon Story
+from: markdown+emoji
 format: 
     clean-revealjs:
         self-contained: true
-        theme: [theme/colours.scss]
+        theme: 
+          - theme/colours.scss
+          - theme/sizes.scss
 author:
     - name: Janith Wanniarachchi
       affiliations: EBS, Monash
@@ -40,10 +43,29 @@ date: Feb 29 2024
 
 ## The project brief
 
-- Create a [data solution]{.green}
-- that tackles local sustainable development challenges
-- and leverages one of the six key transitions
-- which focuses on the SDG localisation enabler.
+- Create a data solution
+- that tackles one or more of the 17 sustainable development goals
+- by leveraging one of the six key transitions
+
+  ::: {.mini}
+
+    - food systems
+    - energy access and affordability
+    - digital connectivity
+    - education
+    - jobs and security
+    - climate change, biodiversity loss, and pollution
+
+  :::
+
+- and focuses on the SDG localisation enabler
+
+  ::: {.mini}
+
+    - place local communities at the centre of development responses
+    - enable local advocacy, local action, and local monitoring and reporting
+
+  :::
 
 ## Our project
 
@@ -86,7 +108,7 @@ rawValues = terra::rast(tiffFile)
 consistentValues = resample(rawValues, baseRaster, method = "bilinear")
 
 valueDataFrame = as.data.frame(consistentValues, xy = TRUE, na.rm = FALSE) %>% 
-    mutate(id = 1:ncell(consistenValues))
+    mutate(id = 1:ncell(consistentValues))
 ```
 
 
@@ -99,7 +121,7 @@ Using "spatial" "random forest".
 ```{.r}
 library(caret)
 
-form = power_density ~ biomass + slope + photovoltaic_potential + lat + lon
+form = power_ratio ~ biomass + slope + photovoltaic_potential + lat + lon
 
 caret::train(
   form,
@@ -115,13 +137,13 @@ Demand was modelled using a proxy quantity constructed from night light intensit
 ```{.python}
 import polars as pl
 
-(regressors.lazy()
+(regressors
   .with_columns(
-    log_density = (255 - pl.col('density') + 1).log10(),
+    log_pop_density = (255 - pl.col('density') + 1).log10(),
     log_nightlight = (pl.col('nightlight') + 1).log10(),
   )
   .with_columns(
-    demand = -(pl.col('log_density') + pl.col('log_nightlight')) + (np.log10(256))
+    demand = -(pl.col('log_pop_density') + pl.col('log_nightlight')) + (np.log10(256))
   )
   .select('x', 'y', 'demand')
 )
@@ -142,7 +164,7 @@ So none of us had much experience with spatial data.
 
 UN provided "data sources"
   - but it was just a shotgun list of other lists 
-  
+
 ![](images/undatathon_datasources_list.png)
 
 ---
@@ -153,12 +175,12 @@ Initial focus was on Africa, but we couldn't find nice shape files or very local
 
 Limitations:
 
-- We wanted to find spatial data at a lower-than-country resolution over a global span.
+- We wanted to find spatial data at a resolution that was better than at country level, and had data for the entire globe.
 
-- Work was done on an AWS EC2 instance that had RStudio Server installed.
-  - AWS has an image with RSTudio server, but you need to add the AMI, which we coulnd't do
-  - So I chose the wrong instance image (Amazaon Linux) and sepnt a day building dependencies from source.
-  - I had to do this again when I upgraded the disk size
+- Work was done on an AWS EC2 VM instance that had RStudio Server installed.
+  - AWS has an image with RStudio Server Pro, but you need to add the AMI, which we couldn't do.
+  - We chose the wrong instance image (Amazon Linux) and spent a day building dependencies from source.
+  - We did this again when we resized the attached EBS storage.
 
 ## The madness continues...
 
@@ -188,10 +210,12 @@ Limitations:
 - We used Facebook/Amazon data source initial for population data: gave up cause the data was too big and broken up into tiles, which then didn't match up after reconstruction.
   - I spent way too much time working on loading the data in R and stitching it together only to abandon it at the end.
 - Moved to the Google Earth Engine API (available in Python and Javascript)
-  - data exports to drive, but no progress indicator
-  - which we had previously used to find terrain data
+  - data exports to Google Drive, but no progress indicator
+  - we had previously used this to find terrain data
+
 . . .
-- The data was consolidated and models were buing built
+
+- The data was consolidated and models were built
   - So I decided to make a Shiny app to showcase our final solution
   - Used the `rhino` framework from Appsilon to speed up the process
   - Learned how to showcase 6 million points in leaflet
@@ -206,17 +230,16 @@ End of day:
 - Models were trained and validated overnight
 - Shiny app was built up to a rough POC
 
-
 ## Day 3
 
 * Model was being iterated on Day 3
-* R Shiny app was being developed further with interactivity and final UI touchups
+* R Shiny app was being developed further with interactivity and final UI touch-ups
 * Sherry became a doctor
-* Submitted our state of the art solution at 6.30pm
-* People watched until 9 p.m.
+* Submitted our state-of-the-art solution at 6.30pm
+* People-watched until 9 p.m.
 * Everywhere good for food was closed or in the process of closing
-* First stop was Riverland Brisbane and then to Felons Barrel ----------
-  * Learnings: The smallest measurement unit in glasses is a pony
+* First stop was Riverland Brisbane and then to Felons Barrel
+  * Fun fact: The smallest measurement unit in glasses is a pony
 
 
 # The learnings
@@ -226,7 +249,7 @@ End of day:
 ::: {.incremental}
 - Impress people with fancy graphics.
 
-  - Use AI {.spooky} to generate images
+  - Use AI :ghost: to generate images
 
 - Communicating the trash you have assembled is (more) important (than the quality of trash you collect)
 
@@ -237,13 +260,16 @@ End of day:
 
 # Acknowledgements
 
+#### Money
 - QUT Centre for Data Science
 - ADSN
 - George
 
+#### Teammates
 - Farhan
 - Sundance
 - Jamie
 
-- Tim
-- Michael
+#### Admin
+- Tim Macuga
+- Michael Lydeamore
