@@ -233,6 +233,7 @@ Limitations:
 ## Day 3
 
 :::{.incremental}
+
 * Model was being iterated on Day 3
 * R Shiny app was being developed further with interactivity and final UI touch-ups
 * Sherry became a doctor
@@ -242,6 +243,7 @@ Limitations:
 * First stop was Riverland Brisbane and then to Felons Barrel
   * Fun fact: The smallest measurement unit in glasses is a pony
 
+:::
 
 # The learnings
 
