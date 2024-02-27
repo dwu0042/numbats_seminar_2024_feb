@@ -224,9 +224,7 @@ Limitations:
     - Had to reduced the resolution to a manageable level
     - Used rectangles to showcase areas, instead of individual dots
 
-. . .
-
-End of day:
+### End of day:
 
 - A simple linear regression model was built as a baseline model
 - Models were trained and validated overnight
@@ -234,6 +232,7 @@ End of day:
 
 ## Day 3
 
+:::{.incremental}
 * Model was being iterated on Day 3
 * R Shiny app was being developed further with interactivity and final UI touch-ups
 * Sherry became a doctor
