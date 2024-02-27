@@ -206,14 +206,16 @@ Limitations:
   - The focus of our solution was changed to the entire world.
   - The grid size was set to 3600 x 1800 (6,480,000 cells!)
   - We don't talk about how long I spent on this in Python that was refactored into a single call in R 
+
 . . .
+
 - We used Facebook/Amazon data source initial for population data: gave up cause the data was too big and broken up into tiles, which then didn't match up after reconstruction.
   - I spent way too much time working on loading the data in R and stitching it together only to abandon it at the end.
 - Moved to the Google Earth Engine API (available in Python and Javascript)
   - data exports to Google Drive, but no progress indicator
   - we had previously used this to find terrain data
 
-. . .
+---
 
 - The data was consolidated and models were built
   - So I decided to make a Shiny app to showcase our final solution
@@ -260,16 +262,18 @@ End of day:
 
 # Acknowledgements
 
-#### Money
+## {.center}
+
+#### Financial backing
 - QUT Centre for Data Science
 - ADSN
-- George
+- George Athanasopoulos
 
 #### Teammates
-- Farhan
-- Sundance
-- Jamie
+- Farhan Ameen
+- Sundance Sun
+- Jamie Hogg
 
-#### Admin
+#### Admininstrative
 - Tim Macuga
 - Michael Lydeamore
