@@ -29,15 +29,15 @@ date: Feb 29 2024
 
 ::: {.r-stack}
 
-![](images/group_img_0.jpeg){.fragment}
+![](images/group_img_0.jpeg){width="80%"}
 
-![](images/group_img_1.jpeg){.fragment}
+![](images/group_img_1.jpeg){.fragment width="80%"}
 
-![](images/group_img_2.jpeg){.fragment}
+![](images/group_img_2.jpeg){.fragment width="80%"}
 
-![](images/group_img_3.jpeg){.fragment}
+![](images/group_img_3.jpeg){.fragment width="80%"}
 
-![](images/group_img_4.jpeg){.fragment}
+![](images/group_img_4.jpeg){.fragment width="80%"}
 
 :::
 
@@ -182,9 +182,14 @@ Limitations:
 - We wanted to find spatial data at a resolution that was better than at country level, and had data for the entire globe.
 
 - Work was done on an AWS EC2 VM instance that had RStudio Server installed.
-  - AWS has an image with RStudio Server Pro, but you need to add the AMI, which we couldn't do.
-  - We chose the wrong instance image (Amazon Linux) and spent a day building dependencies from source.
-  - We did this again when we resized the attached EBS storage.
+
+  :::{.mini}
+
+    - AWS has an image with RStudio Server Pro, but you need to add the AMI, which we couldn't do.
+    - We chose the wrong instance image (Amazon Linux) and spent a day building dependencies from source.
+    - We did this again when we resized the attached EBS storage.
+
+  :::
 
 ## The madness continues...
 
@@ -209,15 +214,14 @@ Limitations:
 - Data was concorded onto a regular grid for analysis.
   - The focus of our solution was changed to the entire world.
   - The grid size was set to 3600 x 1800 (6,480,000 cells!)
-  - We don't talk about how long I spent on this in Python that was refactored into a single call in R 
+  - Initially done in Python, then refactored into a single call in R 
 
 . . .
 
 - We used Facebook/Amazon data source initial for population data: gave up cause the data was too big and broken up into tiles, which then didn't match up after reconstruction.
   - I spent way too much time working on loading the data in R and stitching it together only to abandon it at the end.
-- Moved to the Google Earth Engine API (available in Python and Javascript)
+- Moved to the Google Earth Engine API for population data (available in Python and Javascript)
   - data exports to Google Drive, but no progress indicator
-  - we had previously used this to find terrain data
 
 ---
 
