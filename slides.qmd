@@ -69,18 +69,22 @@ date: Feb 29 2024
 
 ## Our project
 
-### Aim: 
+### Aim 
 
 - At the beginning: Solve world problems
 - Towards the middle: Slap together a half-baked solution in 3 days.
 
-### Problem: 
+::: {.fragment}
+### Problem
 
 Globally, nearly a billion people lack reliable energy sources, and solar is a cost-effective way for this demand to be fulfilled.
+:::
 
-### Solution: 
+:::{.fragment}
+### Solution
 
 Map areas of the globe that solar farm investment would be successful in, by using existing solar farms as training data; overlay that onto a map of energy demand, proxied by night light data.
+:::
 
 ## Data Sources {.smaller}
 
@@ -165,11 +169,11 @@ So none of us had much experience with spatial data.
 UN provided "data sources"
   - but it was just a shotgun list of other lists 
 
-![](images/undatathon_datasources_list.png)
+[![](images/undatathon_datasources_list.png)]([https://](https://web.archive.org/web/20231114192409/https://unstats.un.org/wiki/display/UNDatathon2023/Datasets))
 
 ---
 
-Most of it was spent collecting and sourcing data.
+Most of the day was spent collecting and sourcing data.
 
 Initial focus was on Africa, but we couldn't find nice shape files or very local data for the region.
 
@@ -261,20 +265,26 @@ Limitations:
 - Spatial data is a pain in the ass to work with
 :::
 
-# Acknowledgements
+## Acknowledgements
 
-## {.center}
+:::: {.columns}
 
-#### Financial backing
+::: {.column width="50%"}
+#### Money :money_with_wings:
 - QUT Centre for Data Science
+- EBS / George
 - ADSN
-- George Athanasopoulos
 
-#### Teammates
+#### Teammates :brain:
 - Farhan Ameen
 - Sundance Sun
 - Jamie Hogg
+:::
 
-#### Admininstrative
+::: {.column width="50%"}
+#### Admin :calendar:
 - Tim Macuga
 - Michael Lydeamore
+:::
+
+::::
